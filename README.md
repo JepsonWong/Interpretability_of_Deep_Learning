@@ -14,5 +14,14 @@ tensorfuzz: https://github.com/brain-research/tensorfuzz
 
 [“信息瓶颈”理论揭示深度学习本质](http://www.sohu.com/a/193777221_473283)
 
+[打开人工智能的黑盒子](https://zhuanlan.zhihu.com/p/58099941)
+局部线性可解释性(LIME)
+反卷积(Deconvolution)
+Saliency Map
+类激活地图(Class Activation Map)
+Mask的方法
+
+A Survey of Methods for Explaining Black Box Models: 什么是可解释性、基于解释的分类、解决模型解释问题、解决结果解释问题
+
 ## CNN Visualization 
 
