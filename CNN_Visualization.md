@@ -76,17 +76,55 @@
 
 [CNN可视化研究综述（一）](https://mp.weixin.qq.com/s/cXwjOssIi8_7GTmqaGIgAw)
 
-### 通过Activation Maximization进行可视化。
+### 通过Activation Maximization(AM)进行可视化。
 
 **Visualizing Higher-Layer Features of a Deep Network**: 可视化DNN学习到的高层特征。激活最大化、采样、线性组合法。https://blog.csdn.net/zouxy09/article/details/10012747 https://www.jianshu.com/p/598998bf25e3 https://blog.csdn.net/sheng_ai/article/details/40628757
+
+### 代码反转
+
+另一种叫做代码反转的方法与AM类似，但它不是最大化某些神经元的输出，而是针对特定DNN层重建激活层（参看Mahendran等人提出的“使用自然图像可视化深度卷积神经网络”（https://arxiv.org/abs/1512.02017））。
+
+### 多面特征可视化
+
+MFV的主要思想是：
+
+* 识别激发神经元的不同类型图像。
+* 使用每种图像的均值作为激活初始值
+
+结果表明，每次AM都会收敛到该神经元的不同层面。
+
+### GANs
 
 ## 6 cs231n-卷积网络可视化
 
 https://www.cnblogs.com/coldyan/p/8403506.html
 
+cs231n-理解和可视化卷积网络: https://blog.csdn.net/kangroger/article/details/55681374, http://www.voidcn.com/article/p-plpbfxjc-bde.html
+
+* 可视化卷积网络学到的内容: 可视化激活值和第一层权重, 寻找使网络最激活的图像
+* 使用t-SNE嵌入
+* 遮挡部分图像
+* 可视化数据梯度等
+* 基于CNN重建原始图像
+* 保留多少空间信息
+* Plotting performance as a function of image attributes
+* Fooling ConvNets
+* Comparing ConvNets to Human labelers
+
 ## 7 t-SNE visualization of CNN codes
 
 https://cs.stanford.edu/people/karpathy/cnnembed/
+
+## 8 凭什么相信你，我的CNN模型？（系列文章）
+
+https://bindog.github.io/blog/2018/02/10/model-explanation/
+https://bindog.github.io/blog/2018/02/11/model-explanation-2/
+
+* 反卷积、反向传播和导向反向传播
+* CAM（Class Activation Mapping）
+* Grad-CAM：前面看到CAM的解释效果已经很不错了，但是它有一个致使伤，就是它要求修改原模型的结构，导致需要重新训练该模型，这大大限制了它的使用场景。如果模型已经上线了，或着训练的成本非常高，我们几乎是不可能为了它重新训练的。于是乎，Grad-CAM横空出世，解决了这个问题。
+* Grad-CAM++：https://zhuanlan.zhihu.com/p/46200853
+* LIME：理论上可以解释任何分类器给出的结果
 
 ## 历程
 
@@ -96,6 +134,7 @@ https://cs.stanford.edu/people/karpathy/cnnembed/
 [Feature Visualization: How neural networks build up their understanding of images（好文）](https://distill.pub/2017/feature-visualization/)
 [Deep Visualization:可视化并理解CNN](https://blog.csdn.net/yj3254/article/details/79167338)
 [Deep Visualization:可视化并理解CNN(转)](https://www.cnblogs.com/byteHuang/p/6932772.html)
+[Deep Visualization:可视化并理解CNN](https://zhuanlan.zhihu.com/p/24833574)
 
 * 最初的可视化工作见于AlexNet论文中。在这篇开创Deep Learning新纪元的论文中，Krizhevshy直接可视化了第一个卷积层的卷积核。
 * 最开始使用图片块来可视化卷积核是在RCNN论文中，Girshick的工作显示了数据库中对AlexNet模型较高层(pool5)某个channel具有较强响应的图片块。
@@ -120,4 +159,20 @@ https://cs.stanford.edu/people/karpathy/cnnembed/
 * 模拟模型方法: 例如Interpreting Blackbox Models via Model Extraction
 * 注意力机制
 * 分段线性函数下的神经网络
+
+## 综述论文
+
+How convolutional neural networks see the world --- A survey of convolutional neural network visualization methods: https://www.aimsciences.org/article/doi/10.3934/mfc.2018008
+
+Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Map: https://arxiv.org/abs/1312.6034
+
+Visualizing and Understanding Convolutional Networks: https://link.springer.com/chapter/10.1007/978-3-319-10590-1_53 (建立feature map与原图像之间的可视化的)
+
+Introduce Numerical Solution to Visualize Convolutional Neuron Networks Based on Numerical Solution: 在反卷积网络中引入数值解可视化卷积神经网络 https://www.zhihu.com/question/41529286/answer/93944672
+
+## 代码/项目
+
+https://github.com/yosinski/deep-visualization-toolbox
+
+基于keras的LeNet-5模型可视化、网络特征可视化及kernel可视化: https://blog.csdn.net/lwy_520/article/details/81479486
 
